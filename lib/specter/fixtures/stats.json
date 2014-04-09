@@ -4,8 +4,8 @@
       "STATUS": "S",
       "When": 1397043332,
       "Code": 70,
-      "Msg": "sgminer stats",
-      "Description": "sgminer 4.1.0"
+      "Msg": "specter stats",
+      "Description": "specter 0.1.0"
     }
   ],
   "STATS": [

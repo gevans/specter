@@ -4,8 +4,8 @@
       "STATUS": "S",
       "When": 1397042317,
       "Code": 33,
-      "Msg": "sgminer config",
-      "Description": "sgminer 4.1.0"
+      "Msg": "specter config",
+      "Description": "specter 0.1.0"
     }
   ],
   "CONFIG": [
