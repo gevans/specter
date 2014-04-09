@@ -8,7 +8,7 @@ module Specter
         @server = server
       end
 
-      def_delegator :@server, :logger
+      def_delegators :@server, :logger, :options
     end # Base
   end # Middleware
 end # Specter

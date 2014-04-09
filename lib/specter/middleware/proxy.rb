@@ -6,7 +6,7 @@ module Specter
 
       def initialize(app, server)
         super
-        @miner = Expedition.client
+        @miner = Expedition::Client.new(*options[:proxy])
       end
 
       def call(env)

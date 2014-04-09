@@ -10,7 +10,7 @@ module Specter
     def self.new(server)
       ::Middleware::Builder.new do
         use Fixture, server
-        use Proxy, server
+        use Proxy, server if server.options[:proxy]
         yield if block_given?
       end
     end

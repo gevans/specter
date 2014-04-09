@@ -63,6 +63,18 @@ module Specter
           options[:port] = Integer(arg)
         end
 
+        opts.on '-P', '--proxy [HOST[:PORT]]', 'Send unrecognized commands to an actual running miner',
+          "Host defaults to `localhost', port defaults to `4028'" do |arg|
+          options[:proxy] = arg.to_s.split(':', 2)
+
+          case options[:proxy].size
+          when 0
+            options[:proxy] = ['localhost', 4028]
+          when 1
+            options[:proxy] << 4028
+          end
+        end
+
         opts.on_tail '-v', '--version', 'Show version information and exit' do |arg|
           puts "specter v#{Specter::VERSION}"
           exit
