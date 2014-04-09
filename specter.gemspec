@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Specter::VERSION
   spec.authors       = ['Gabe Evans']
   spec.email         = ['gabe@ga.be']
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{Specter stubs a subset of the cgminer client protocol. It allows you to test your programs against a dummy server when writing programs that interact with cgminer and cgminer-compatibile software.}
+  spec.description   = spec.summary
   spec.homepage      = 'https://github.com/gevans/specter'
   spec.license       = 'MIT'
 
