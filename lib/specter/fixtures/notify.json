@@ -1,0 +1,68 @@
+{
+  "STATUS": [
+    {
+      "STATUS": "S",
+      "When": 1397042713,
+      "Code": 60,
+      "Msg": "Notify",
+      "Description": "sgminer 4.1.0"
+    }
+  ],
+  "NOTIFY": [
+    {
+      "NOTIFY": 0,
+      "Name": "GPU",
+      "ID": 0,
+      "Last Well": 1397042713,
+      "Last Not Well": 0,
+      "Reason Not Well": "None",
+      "*Thread Fail Init": 0,
+      "*Thread Zero Hash": 0,
+      "*Thread Fail Queue": 0,
+      "*Dev Sick Idle 60s": 0,
+      "*Dev Dead Idle 600s": 0,
+      "*Dev Nostart": 0,
+      "*Dev Over Heat": 0,
+      "*Dev Thermal Cutoff": 0,
+      "*Dev Comms Error": 0,
+      "*Dev Throttle": 0
+    },
+    {
+      "NOTIFY": 1,
+      "Name": "GPU",
+      "ID": 1,
+      "Last Well": 1397042713,
+      "Last Not Well": 0,
+      "Reason Not Well": "None",
+      "*Thread Fail Init": 0,
+      "*Thread Zero Hash": 0,
+      "*Thread Fail Queue": 0,
+      "*Dev Sick Idle 60s": 0,
+      "*Dev Dead Idle 600s": 0,
+      "*Dev Nostart": 0,
+      "*Dev Over Heat": 0,
+      "*Dev Thermal Cutoff": 0,
+      "*Dev Comms Error": 0,
+      "*Dev Throttle": 0
+    },
+    {
+      "NOTIFY": 2,
+      "Name": "GPU",
+      "ID": 2,
+      "Last Well": 1397042713,
+      "Last Not Well": 0,
+      "Reason Not Well": "None",
+      "*Thread Fail Init": 0,
+      "*Thread Zero Hash": 0,
+      "*Thread Fail Queue": 0,
+      "*Dev Sick Idle 60s": 0,
+      "*Dev Dead Idle 600s": 0,
+      "*Dev Nostart": 0,
+      "*Dev Over Heat": 0,
+      "*Dev Thermal Cutoff": 0,
+      "*Dev Comms Error": 0,
+      "*Dev Throttle": 0
+    }
+  ],
+  "id": 1
+}

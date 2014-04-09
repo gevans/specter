@@ -1,0 +1,41 @@
+{
+  "STATUS": [
+    {
+      "STATUS": "S",
+      "When": 1397042151,
+      "Code": 69,
+      "Msg": "Device Details",
+      "Description": "sgminer 4.1.0"
+    }
+  ],
+  "DEVDETAILS": [
+    {
+      "DEVDETAILS": 0,
+      "Name": "GPU",
+      "ID": 0,
+      "Driver": "opencl",
+      "Kernel": "ckolivas",
+      "Model": "AMD Radeon R9 200 Series",
+      "Device Path": ""
+    },
+    {
+      "DEVDETAILS": 1,
+      "Name": "GPU",
+      "ID": 1,
+      "Driver": "opencl",
+      "Kernel": "ckolivas",
+      "Model": "AMD Radeon R9 200 Series",
+      "Device Path": ""
+    },
+    {
+      "DEVDETAILS": 2,
+      "Name": "GPU",
+      "ID": 2,
+      "Driver": "opencl",
+      "Kernel": "ckolivas",
+      "Model": "AMD Radeon R9 200 Series",
+      "Device Path": ""
+    }
+  ],
+  "id": 1
+}

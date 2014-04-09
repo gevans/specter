@@ -1,0 +1,21 @@
+{
+  "STATUS": [
+    {
+      "STATUS": "S",
+      "When": 1397043350,
+      "Code": 78,
+      "Msg": "sgminer coin",
+      "Description": "sgminer 4.1.0"
+    }
+  ],
+  "COIN": [
+    {
+      "Hash Method": "scrypt",
+      "Current Block Time": 1397043315.715224,
+      "Current Block Hash": "43731fc6b8fe04dc579f6a5434330a4cfbcc674988202555fb39e54802ceae3e",
+      "LP": true,
+      "Network Difficulty": 62452873.65228917
+    }
+  ],
+  "id": 1
+}

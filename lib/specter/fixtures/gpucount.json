@@ -1,0 +1,17 @@
+{
+  "STATUS": [
+    {
+      "STATUS": "S",
+      "When": 1397042675,
+      "Code": 20,
+      "Msg": "GPU count",
+      "Description": "sgminer 4.1.0"
+    }
+  ],
+  "GPUS": [
+    {
+      "Count": 3
+    }
+  ],
+  "id": 1
+}

@@ -1,0 +1,18 @@
+{
+  "STATUS": [
+    {
+      "STATUS": "S",
+      "When": 1397042303,
+      "Code": 22,
+      "Msg": "SGMiner versions",
+      "Description": "sgminer 4.1.0"
+    }
+  ],
+  "VERSION": [
+    {
+      "SGMiner": "4.1.0",
+      "API": "1.32"
+    }
+  ],
+  "id": 1
+}

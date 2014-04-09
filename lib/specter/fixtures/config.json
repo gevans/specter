@@ -1,0 +1,28 @@
+{
+  "STATUS": [
+    {
+      "STATUS": "S",
+      "When": 1397042317,
+      "Code": 33,
+      "Msg": "sgminer config",
+      "Description": "sgminer 4.1.0"
+    }
+  ],
+  "CONFIG": [
+    {
+      "GPU Count": 3,
+      "Pool Count": 4,
+      "ADL": "Y",
+      "ADL in use": "Y",
+      "Strategy": "Failover",
+      "Log Interval": 5,
+      "Device Code": "GPU ",
+      "OS": "Linux",
+      "Failover-Only": true,
+      "ScanTime": 60,
+      "Queue": 1,
+      "Expiry": 120
+    }
+  ],
+  "id": 1
+}

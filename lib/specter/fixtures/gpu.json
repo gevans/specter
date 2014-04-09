@@ -1,0 +1,47 @@
+{
+  "STATUS": [
+    {
+      "STATUS": "S",
+      "When": 1397042259,
+      "Code": 17,
+      "Msg": "GPU0",
+      "Description": "sgminer 4.1.0"
+    }
+  ],
+  "GPU": [
+    {
+      "GPU": 0,
+      "Enabled": "Y",
+      "Status": "Alive",
+      "Temperature": 76.0,
+      "Fan Speed": -1,
+      "Fan Percent": 99,
+      "GPU Clock": 944,
+      "Memory Clock": 1500,
+      "GPU Voltage": 0.0,
+      "GPU Activity": 100,
+      "Powertune": 30,
+      "MHS av": 0.9292,
+      "MHS 5s": 0.9307,
+      "KHS av": 929,
+      "KHS 5s": 931,
+      "Accepted": 1149,
+      "Rejected": 1,
+      "Hardware Errors": 0,
+      "Utility": 1.6708,
+      "Intensity": "0",
+      "Last Share Pool": 0,
+      "Last Share Time": 1397042234,
+      "Total MH": 38338.9389,
+      "Diff1 Work": 590236,
+      "Difficulty Accepted": 588288.0,
+      "Difficulty Rejected": 512.0,
+      "Last Share Difficulty": 512.0,
+      "Last Valid Work": 1397042233,
+      "Device Hardware%": 0.0,
+      "Device Rejected%": 0.0867,
+      "Device Elapsed": 41261
+    }
+  ],
+  "id": 1
+}
