@@ -13,7 +13,6 @@ module Specter
           env.merge!(data)
         else
           @app.call(env)
-          save_fixture(env)
         end
       end
 
@@ -26,15 +25,7 @@ module Specter
         JSON.load(File.read(fixture))
       rescue JSON::ParserError
         logger.debug "failed to parse fixture for #{env.command.inspect}"
-        FileUtils.rm(fixture) rescue nil
         nil
-      end
-
-      def save_fixture(env)
-        File.open(ROOT.join("#{env.command}.json"), 'w') do |f|
-          f.write JSON.pretty_generate(env.to_hash)
-        end
-        logger.debug "saved fixture for #{env.command.inspect}"
       end
     end # Fixture
   end # Middleware
