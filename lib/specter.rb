@@ -1,3 +1,7 @@
+require 'forwardable'
+require 'logger'
+require 'socket'
+
 require 'specter/version'
 require 'specter/cli'
 require 'specter/server'

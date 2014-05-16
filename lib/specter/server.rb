@@ -1,9 +1,6 @@
-require 'socket'
-require 'logger'
-
+require 'specter/env'
 require 'specter/middleware'
 require 'specter/request'
-require 'specter/env'
 
 module Specter
   class Server

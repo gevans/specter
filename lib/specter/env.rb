@@ -1,5 +1,3 @@
-require 'forwardable'
-
 module Specter
   class Env < Hash
     extend Forwardable
