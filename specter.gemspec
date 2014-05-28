@@ -18,6 +18,8 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = %w(lib)
 
+  spec.add_dependency 'celluloid', '>= 0.16.0.pre'
+  spec.add_dependency 'celluloid-io', '>= 0.16.0.pre'
   spec.add_dependency 'middleware'
 
   spec.add_development_dependency 'bundler', '~> 1.5'

@@ -4,7 +4,7 @@ module Specter
       extend Forwardable
 
       def initialize(app, server)
-        @app = app
+        @app    = app
         @server = server
       end
 

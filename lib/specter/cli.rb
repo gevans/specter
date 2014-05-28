@@ -2,44 +2,41 @@ require 'optparse'
 require 'uri'
 
 module Specter
-  class Cli
+  class CLI
 
-    DEFAULT_HOST = '0.0.0.0'
+    DEFAULT_HOST = '0.0.0.0'.freeze
 
     DEFAULT_PORT = 5028
 
     attr_reader :options
 
+    attr_reader :logger
+
     def initialize(argv)
-      @argv = argv
+      @argv    = argv
       @options = {}
+      @logger  = Logger.new(STDOUT).tap do |log|
+        log.level = Logger::INFO
+      end
     end
 
     def self.start(argv)
       new(argv).run
     end
 
-    def output_header
-      puts "Booting Specter v#{VERSION}..."
-      puts "* Running in #{RUBY_DESCRIPTION}"
-      puts "* Listening on tcp://#{options[:host]}:#{options[:port]}"
-      puts 'Use Ctrl-C to stop'
-    end
-
     def run
       parse_options
-      output_header
 
-      @thread = @server.run
-      @thread.run
+      begin
+        @server = Server.new(self)
+        output_header
 
-      Signal.trap('INT') do
-        puts 'Stopping...'
-        @thread.exit
+        sleep 5 while @server.alive?
+      rescue Interrupt
+        puts 'Shutting down...'
+        @server.shutdown
         exit
       end
-
-      @thread.join
     end
 
     private
@@ -48,7 +45,6 @@ module Specter
       @options = {
         host: DEFAULT_HOST,
         port: DEFAULT_PORT,
-        debug: true
       }
 
       parser = OptionParser.new do |opts|
@@ -63,16 +59,8 @@ module Specter
           options[:port] = Integer(arg)
         end
 
-        opts.on '-P', '--proxy [HOST[:PORT]]', 'Send unrecognized commands to an actual running miner',
-          "Host defaults to `localhost', port defaults to `4028'" do |arg|
-          options[:proxy] = arg.to_s.split(':', 2)
-
-          case options[:proxy].size
-          when 0
-            options[:proxy] = ['localhost', 4028]
-          when 1
-            options[:proxy] << 4028
-          end
+        opts.on '-d', '--devices [VARIANT]:[HASHRATE],...', 'List of simulated devices' do |arg|
+          options[:devices] = parse_devices(arg)
         end
 
         opts.on_tail '-v', '--version', 'Show version information and exit' do |arg|
@@ -88,7 +76,25 @@ module Specter
 
       parser.parse!(@argv)
 
-      @server = Server.new(self)
+      if options[:devices].nil? || options[:devices].empty?
+        options[:devices] = parse_devices('gpu:1,gpu:1,gpu:1')
+      end
+
+      Celluloid::Actor[:devices] = Devices.new(options[:devices])
+    end
+
+    def parse_devices(arg)
+      arg.split(',').collect { |d|
+        v, h = d.split(':', 2)
+        Device.new(v.downcase.to_sym, Float(h))
+      }
+    end
+
+    def output_header
+      puts "Booting Specter v#{VERSION}..."
+      puts "* Running in #{RUBY_DESCRIPTION}"
+      puts "* Listening on tcp://#{options[:host]}:#{options[:port]}"
+      puts 'Use Ctrl-C to stop'
     end
   end # Cli
 end # Specter

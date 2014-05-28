@@ -5,4 +5,4 @@ root = File.expand_path('../../lib', __FILE__)
 $LOAD_PATH.unshift(root) unless $LOAD_PATH.include?(root)
 
 require 'specter'
-Specter::Cli.start(ARGV)
+Specter::CLI.start(ARGV)

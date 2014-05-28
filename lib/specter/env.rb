@@ -2,14 +2,11 @@ module Specter
   class Env < Hash
     extend Forwardable
 
-    attr_reader :client
-
     attr_reader :request
 
-    def_delegators :request, :command, :args
+    def_delegators :request, :command, :params
 
-    def initialize(client, request)
-      @client  = client
+    def initialize(request)
       @request = request
     end
 

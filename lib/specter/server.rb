@@ -1,74 +1,62 @@
+require 'celluloid'
+require 'celluloid/io'
+
 require 'specter/env'
 require 'specter/middleware'
 require 'specter/request'
 
 module Specter
   class Server
+    extend Forwardable
+    include Celluloid::IO
 
     attr_reader :cli
 
-    attr_reader :options
-
-    attr_reader :logger
-
-    attr_reader :socket
-
-    attr_reader :stack
+    def_delegators :cli, :options, :logger
 
     def initialize(cli)
-      @cli     = cli
-      @options = cli.options
-
-      @logger = Logger.new(STDOUT)
+      @cli    = cli
       @socket = TCPServer.new(options[:host], options[:port])
       @stack  = Middleware.new(self)
+
+      async.run
     end
 
     def run
-      BasicSocket.do_not_reverse_lookup = true
-      return @thread = Thread.new { handle_requests }
+      loop { async.handle_connection(@socket.accept) }
     end
 
-    def handle_requests
-      loop do
-        client = socket.accept
-        process_request(client)
-      end
+    def shutdown
+      @socket.close rescue nil
     end
 
-    def process_request(client)
-      Timeout.timeout(5) do
-        req = Request.parse(client.gets)
-        env = Env.new(client, req)
-        log_request(env)
-        @stack.call(env)
-        client.write env.to_str
-      end
-    rescue Timeout::Error
-      log_timeout(client)
-    rescue Object => e
-      log_error(client, e)
+    def handle_connection(socket)
+      raw = socket.gets.chomp
+      env = Request.parse(raw).to_env
+
+      @stack.call(env)
+
+      res = env.to_str
+
+      socket.write res
+      puts "#{raw} - #{res}"
+    rescue Exception => ex
+      log_error socket, ex
     ensure
-      client.close rescue nil
+      socket.close rescue nil
     end
+
+    private
 
     def log_timeout(client)
-      logger.warn "%s - timeout" % [
-        client.remote_address.ip_address
-      ]
     end
 
-    def log_error(client, e)
-      logger.error "%s - %s: %s\n%s" % [
-        client.remote_address.ip_address, e.class, e.message,
-        e.backtrace.join("\n")
-      ]
+    def log_error(client, ex)
+      puts "#{ex.class}: #{ex.message}"
+      puts ex.backtrace.join("\n")
     end
 
     def log_request(env)
-      logger.info "%s - %s - %s" % [
-        env.client.remote_address.ip_address, env.request.command, env.request.args.inspect
-      ]
     end
   end # Server
 end # Specter
