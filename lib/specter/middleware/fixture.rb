@@ -10,6 +10,7 @@ module Specter
         data = load_fixture(env)
 
         if data
+          data['STATUS'][0]['When'] = Time.now.to_i
           env.merge!(data)
         else
           @app.call(env)
