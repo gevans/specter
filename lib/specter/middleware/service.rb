@@ -5,7 +5,7 @@ module Specter
     class Service < Base
 
       METHODS = %w(
-        devs
+        devs summary
       ).freeze
 
       def call(env)
@@ -35,6 +35,12 @@ module Specter
       def devs
         {
           'DEVS' => Celluloid::Actor[:devices].collect(&:to_hash)
+        }
+      end
+
+      def summary
+        {
+          'SUMMARY' => [Celluloid::Actor[:devices].collect(&:to_hash).inject(&:merge)]
         }
       end
     end # Service
